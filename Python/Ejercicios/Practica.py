@@ -1,4 +1,6 @@
-list = ['apples', 'bananas', 'tofu', 'cats']
-list.insert(-1, 'and')
-for i in range(0, len(list)):
+list = ['Valiant', 'Es', 'Un', 'Duro', 'En', 'Cagarla', 'Computadoras']
+ultimo = int(len(list))
+for i in range(0, ultimo - 1):
     print(f"{list[i]}", end=", ")
+
+print(f"and {list[ultimo - 1]}")
