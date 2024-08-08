@@ -1,15 +1,15 @@
-tablero = [['0', '|', ' ', '|', ' ',],
-           ['-', '+', '-', '+', '-',],
-           [' ', '|', ' ', '|', ' ',],
-           ['-', '+', '-', '+', '-',],
-           [' ', '|', ' ', '|', ' ',]]
+tablero = {"A1":' A1 ', "A2":' A2 ', "A3":' A3 ',
+           "B1":' B1 ', "B2":' B2 ', "B3":' B3 ',
+           "C1":' C1 ', "C2":' C2 ', "C3":' C3 '}
 
 
 def drawboard():
-    for i in range(0, 5):
-        print("\n")
-        for j in range(0, 5):
-            print(tablero[i][j], end=' ')
+    print(f"{tablero["A1"]} | {tablero["A2"]} | {tablero["A3"]}")
+    print(f"------------------")
+    print(f"{tablero["B1"]} | {tablero["B2"]} | {tablero["B3"]}")
+    print(f"------------------")
+    print(f"{tablero["C1"]} | {tablero["C2"]} | {tablero["C3"]}")
+
 
 # def winners():
 #    if ():
@@ -17,12 +17,16 @@ def drawboard():
 turno = 0;
 print("TIC-TAC-TOE")
 drawboard()
-if (turno % 2 == 0):
-    print("\nTURNO DE X")
-    fila = int(input("Ingrese la fila a seleccionar: "))
-    columna = int(input("Ingrese la columna a seleccionar: "))
-    tablero[fila][columna] = 'x'
-    turno += 1
-    drawboard()
-else:
-    print("\nTURNO DE O")
+while True and turno < 9:
+    if (turno % 2 == 0):
+        print("\nTURNO DE X")
+        recuadro = input("Ingrese el recuadro a marcar: ")
+        tablero[recuadro] = ' X '
+        turno += 1
+        drawboard()
+    else:
+        print("\nTURNO DE O")
+        recuadro = input("Ingrese la recuadro a seleccionar: ")
+        tablero[recuadro] = ' O '
+        turno += 1
+        drawboard()

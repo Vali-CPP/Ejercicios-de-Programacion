@@ -1,3 +1,2 @@
-#! /bin/bash 
-
-cat >> helloworld.txt
+#! /bin/bash
+echo "Hola mundo"
