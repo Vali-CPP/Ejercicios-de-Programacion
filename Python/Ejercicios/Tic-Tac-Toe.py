@@ -32,6 +32,7 @@ while True and turno < 9:
     if (turno % 2 == 0):
         print("\nTURNO DE X")
         recuadro = input("Ingrese el recuadro a marcar: ")
+        recuadro = recuadro.upper()
         tablero[recuadro] = ' X '
         turno += 1
         drawboard()
@@ -42,6 +43,7 @@ while True and turno < 9:
         print("\nTURNO DE O")
         recuadro = input("Ingrese la recuadro a seleccionar: ")
         tablero[recuadro] = ' O '
+        recuadro = recuadro.upper()
         turno += 1
         drawboard()
         if winners(tablero):
