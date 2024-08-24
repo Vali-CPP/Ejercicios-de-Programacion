@@ -1,0 +1,9 @@
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Ejemplo-1.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/edit_cache.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/rebuild_cache.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/list_install_components.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/local.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/strip.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Ejemplo-1_autogen_timestamp_deps.dir
+/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Ejemplo-1_autogen.dir

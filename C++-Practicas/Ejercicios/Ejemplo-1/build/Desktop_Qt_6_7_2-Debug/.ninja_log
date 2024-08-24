@@ -1,0 +1,12 @@
+# ninja log v5
+13	168	1724296596556509560	Ejemplo-1_autogen/timestamp	995a157ce0e940c6
+13	168	1724296596556509560	Ejemplo-1_autogen/mocs_compilation.cpp	995a157ce0e940c6
+13	168	1724296596556509560	/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/Ejemplo-1_autogen/timestamp	995a157ce0e940c6
+13	168	1724296596556509560	/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/Ejemplo-1_autogen/mocs_compilation.cpp	995a157ce0e940c6
+168	324	1724296596724508191	CMakeFiles/Ejemplo-1.dir/Ejemplo-1_autogen/mocs_compilation.cpp.o	ced3aaf6bb6bc806
+7	40	1724296617067342140	Ejemplo-1_autogen/timestamp	995a157ce0e940c6
+7	40	1724296617067342140	Ejemplo-1_autogen/mocs_compilation.cpp	995a157ce0e940c6
+7	40	1724296617067342140	/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/Ejemplo-1_autogen/timestamp	995a157ce0e940c6
+7	40	1724296617067342140	/home/deve/Documents/Programacion/C++-Practicas/Ejercicios/Ejemplo-1/build/Desktop_Qt_6_7_2-Debug/Ejemplo-1_autogen/mocs_compilation.cpp	995a157ce0e940c6
+40	4619	1724296630726230282	CMakeFiles/Ejemplo-1.dir/main.cpp.o	4944e93e13e3c0f7
+4620	5081	1724296631193226453	Ejemplo-1	5f7dc3f777ba136f
