@@ -1,9 +1,0 @@
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Hola-Mundo.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/edit_cache.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/rebuild_cache.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/list_install_components.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/local.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/install/strip.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Hola-Mundo_autogen_timestamp_deps.dir
-/home/deve/Documents/Programacion/C++-Practicas/Proyectos/Hola-Mundo/build/Desktop_Qt_6_7_2-Debug/CMakeFiles/Hola-Mundo_autogen.dir
