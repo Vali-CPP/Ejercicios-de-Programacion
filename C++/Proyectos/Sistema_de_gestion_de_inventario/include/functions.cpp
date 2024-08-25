@@ -16,3 +16,27 @@ int mostrarMenu() {
   cin >> opcion;
   return opcion;
 }
+
+string obtenerNombre() {
+  cin.ignore();
+  cout << "Ingrese el nombre del producto" << endl;
+  string nombre;
+  getline(cin, nombre);
+  return nombre;
+}
+
+float obtenerPrecio() {
+  cin.ignore();
+  cout << "Ingrese el precio del producto" << endl;
+  float precio;
+  cin >> precio;
+  return precio;
+}
+
+int obtenerStock() {
+  cin.ignore();
+  cout << "Ingrese la cantidad en stock del producto" << endl;
+  int stock;
+  cin >> stock;
+  return stock;
+}

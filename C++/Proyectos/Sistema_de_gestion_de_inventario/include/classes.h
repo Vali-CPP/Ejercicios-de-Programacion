@@ -30,28 +30,39 @@ class Producto {
 class Inventario{
   private:
   Producto inventario[10];
+  int numero_de_productos = 0;
 
   public:
 
-  void agregar(int pos, std::string nom, float price, int stk){
-    inventario[pos].setNombre(nom);
-    inventario[pos].setPrecio(price);
-    inventario[pos].setStock(stk);
+  int getNumero_de_productos(){
+    return numero_de_productos;
+  }
+
+  void agregar(std::string nom, float price, int stk){
+    inventario[getNumero_de_productos()].setNombre(nom);
+    inventario[getNumero_de_productos()].setPrecio(price);
+    inventario[getNumero_de_productos()].setStock(stk);
+    numero_de_productos++;
   }
 
   void ver(){
-    std::cout << "Nombre | Precio | Stock\n";
+    std::cout << "Listado de productos: \n";
     for(int i = 0; i < 10; i++){
       if (inventario[i].getNombre() != "") {
-      std::cout << inventario[i].getNombre() << inventario[i].getPrecio() << inventario[i].getStock() << "\n";
+      std::cout << "Nombre: " << inventario[i].getNombre() << "\t Precio: " << inventario[i].getPrecio() << "\t Stock: " << inventario[i].getStock() << "\n";
       }
     }
   }
 
-  void eliminar(int pos){
-    inventario[pos].setNombre("");
-    inventario[pos].setPrecio(0);
-    inventario[pos].setStock(0);
+  void eliminar(std::string nom){
+    for (int i = 0; i < 10; i++) {
+      if (inventario[i].getNombre() == nom) {
+        inventario[i].setNombre("");
+        inventario[i].setPrecio(0);
+        inventario[i].setStock(0);
+      }
+    }
+     --numero_de_productos;
   }
 
   void buscar(std::string nom){
