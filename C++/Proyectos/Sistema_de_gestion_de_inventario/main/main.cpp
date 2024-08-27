@@ -13,26 +13,25 @@ int main (){
     int op = mostrarMenu();
   switch (op){
    case 1:
-    system("clear");
     Master.ver();
     break;
    case 2:
     Master.agregar(obtenerNombre(), obtenerPrecio(), obtenerStock());
     break;
-//   case 3:
-//     Master.eliminar();
-//     break;
-//   case 4:
-//     Master.buscar();
-//     break;
+   case 3:
+     Master.eliminar(obtenerNombre());
+     break;
+   case 4:
+     Master.buscar(obtenerNombre());
+     break;
     case 5:
     flag = false;
       break;
     default:
-      system("clear");
       cout << "Opcion no valida" << endl;
       break;
     }
+  system("clear");
   } while (flag);
   return 0;
 }

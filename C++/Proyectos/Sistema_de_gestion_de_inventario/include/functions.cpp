@@ -1,6 +1,7 @@
 #include <iostream>
 #include "functions.h"
 
+
 using namespace std;
 
 int mostrarMenu() {
@@ -39,4 +40,10 @@ int obtenerStock() {
   int stock;
   cin >> stock;
   return stock;
+}
+
+void Pausa(){
+  cout << "Presione una tecla para continuar" << endl;
+  cin.ignore();
+  cin.get();
 }
