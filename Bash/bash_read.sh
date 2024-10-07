@@ -1,4 +1,4 @@
 #! /bin/bash
-echo "Ingresa tu nombre:" 
+echo "Ingresa tu nombre:"
 read nombre
-echo "Tu nombre es: $nombre"  
+echo "Tu nombre es: $nombre"
