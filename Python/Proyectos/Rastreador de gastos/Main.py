@@ -1,18 +1,24 @@
 def cls():
     import os
-    os.system('cls' if os.name== 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
     return ''
 
+
+def mostrar_menu():
+	seleccion = str(input("Bienvenido a tu rastreador de gastos en Python, que accion deseas realizar, (a)gregar, (v)isualizar, (e)liminar: \n"))
+	if seleccion == "v":
+	    cls()
+	    input("\nPresiona cualquier tecla para continuar.....")
+	    cls()
+	elif seleccion =="a":
+	    cls()
+	    input("\nPresiona cualquier tecla para continuar.....")
+	    cls()
+
+
 while True:
-    seleccion = str(input("\n Bienvenido a tu rastreador de gastos en Python, que accion deseas realizar, (a)gregar, (v)isualizar, (e)liminar: \n"))
-    if seleccion == "v":
-        cls()
-        input("\nPresiona cualquier tecla para continuar.....")
-        cls()
-    elif seleccion =="a":
-        cls()
-        input("\nPresiona cualquier tecla para continuar.....")
-        cls()
+    mostrar_menu()
+
 
 """
 Todo:
