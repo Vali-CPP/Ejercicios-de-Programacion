@@ -1,1 +1,0 @@
-fecha,hora,objeto,es necesario para, coste $, coste BsS
