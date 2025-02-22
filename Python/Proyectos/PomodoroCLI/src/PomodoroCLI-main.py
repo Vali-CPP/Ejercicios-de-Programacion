@@ -1,38 +1,50 @@
 import time
 import os
 
-def convertir_int_seguro(variable_a_convertir, mensaje_de_error):
-    try:
-        variable_convertida = int(variable_a_convertir)
-        return variable_convertida
-    except ValueError:
-        print(mensaje_de_error)
-
 def limpiar_pantalla():
     if os.name == "nt":
         os.system("cls")
     else:
         os.system("clear")
 
-def bienvenida():
-    limpiar_pantalla()
-    print("Bienvenido a tu aplicacion de Pomodoro, dime que hacer: \n1)Iniciar un pomodoro\n2)Salir")
+def validacion_int(mensaje_peticion, mensaje_de_error = "Caracter invalido", limite_inferior = -999, limite_superior = 999):
     while True:
         try:
-            decision = int(input("?:"))
-            if decision >= 3 or decision < 1:
-                print("Numero incorrecto")
+            int_validado = int(input(mensaje_peticion))
+            if int_validado <= limite_inferior or int_validado > limite_superior:
+                print("El numero es muy bajo y/o alto")
+                limpiar_pantalla()
             else:
-                return decision
+                return int_validado
         except ValueError:
-            print("Eso no es un numero")
+            print(mensaje_de_error)
 
-        
+def bienvenida():
+    limpiar_pantalla()
+    return validacion_int("Bienvenido a tu aplicacion de Pomodoro, dime que hacer: \n1)Iniciar un pomodoro\n2)Salir\n:", "Numero invalido", 0, 2)
 
+def calcular_y_pasar_tiempo(tiempo):
+    actual = time.time()
+    meta = actual + tiempo 
+
+verificar_ingreso_tiempo = False
+ciclos = ["C"]
 
 if bienvenida() == 1:
     limpiar_pantalla()
-    tiempo_del_pomodoro = input("Cuanto tiempo va a durar este pomodoro?:")
+    tiempo_de_enfoque = validacion_int("Duracion de la fase de enfoque en minutos: ", "Caracter Invalido", 0)
+    tiempo_de_descanso = validacion_int("Duracion de la fase de descanso en minutos: ", "Caracter Invalido", 0)
+    numero_de_pomodoros = validacion_int("Ingrese el numero de etapas de concentracion que tendra el pomodoro: ", "Caracter Invalido", 0)
+    print(f"Esta seguro de querer continua con sus {numero_de_pomodoros} Pomodoro(s) de {tiempo_de_enfoque} minuto(s) de enfoque y {tiempo_de_descanso} minuto(s) de descanso?: \n1)Si\n2)No")
+    decision = validacion_int(":", "Caracter Invalido", 0, 2)
+    for i in range(0, numero_de_pomodoros - 1):
+        ciclos.append("D")
+        ciclos.append("C")
+    for fase in ciclos:
+        if fase == "C":
+            print("Concentracion")
+        else:
+            print("Descanso")
 else:
     pass
 
