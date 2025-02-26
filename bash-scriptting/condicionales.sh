@@ -1,4 +1,5 @@
 #! /bin/bash
+
 echo "Ingresa tu edad: "
 read edad
 
