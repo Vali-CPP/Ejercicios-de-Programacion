@@ -5,8 +5,8 @@ import subprocess
 
 """
              TODO
-             - Manejar la finalizacion o repeticion del programa dependiendo de lo que quiera el usuario.
-             - Investigar como integrar una base de datos rudimentaria en un CSV
+             - Investigar como integrar una base de datos rudimentaria en un CSV para asi mantener un track de la cantidad de tiempo que se ha trabajado
+             diariamente.
 """
 
 
@@ -51,11 +51,16 @@ def validacion_int(mensaje_peticion, mensaje_de_error = "Caracter invalido", lim
     while True:
         try:
             int_validado = int(input(mensaje_peticion))
-            if int_validado <= limite_inferior or int_validado > limite_superior:
-                print("El numero es muy bajo y/o alto")
-                limpiar_pantalla()
+
+            if int_validado <= limite_inferior:
+                print("El numero es muy bajo")
+
+            elif int_validado > limite_superior:
+                print("El numero es muy alto")
+
             else:
                 return int_validado
+
         except ValueError:
             print(mensaje_de_error)
 
@@ -64,7 +69,11 @@ def bienvenida():
     return validacion_int("1)Iniciar un pomodoro\n2)Salir\n:", "Numero invalido", 0, 2)
 
 def despedida():
-    repetir = input("Quiere volver a correr otro Pomodoro, en caso de que no el programa se cerrar directamente (Y/N)").lower()
+
+    limpiar_pantalla()
+
+    repetir = input("Quiere volver a correr otro Pomodoro, en caso de que no el programa se cerrar directamente (Y/N)\n:").lower()
+
     if repetir == 'n':
         return sys.exit()
 
@@ -72,27 +81,28 @@ def despedida():
 correr = True
 
 while correr:
-    if bienvenida() == 1:
 
-        limpiar_pantalla()
+    try:
+        if bienvenida() == 1:
 
-        t_concentracion = validacion_int("Ingrese el tiempo de concentracion deseado:", "Tiempo invalido, debe ser mayor que cero", 0)
-        t_descanso = validacion_int("Ingrese el tiempo de descanso deseado:", "Tiempo invalido, debe ser mayor que cero", 0)
-        n_ciclos = validacion_int("Ingrese el numero de ciclos a completar:", "Tiempo invalido, el numero de ciclos tiene que ser mayor a cero", 0)
+            limpiar_pantalla()
 
-        pomo_actual = Pomodoro(t_concentracion, t_descanso, n_ciclos)
-        pomo_actual.definir_ciclos()
+            t_concentracion = validacion_int("Ingrese el tiempo de concentracion deseado:", "Tiempo invalido, debe ser mayor que cero", 0)
+            t_descanso = validacion_int("Ingrese el tiempo de descanso deseado:", "Tiempo invalido, debe ser mayor que cero", 0)
+            n_ciclos = validacion_int("Ingrese el numero de ciclos a completar:", "Tiempo invalido, el numero de ciclos tiene que ser mayor a cero", 0)
 
+            pomo_actual = Pomodoro(t_concentracion, t_descanso, n_ciclos)
+            pomo_actual.definir_ciclos()
 
-        try:
             for fase in pomo_actual.get_ciclos():
                 pomo_actual.temporizador(fase[0], fase[1])
                 "Etapa terminada, pasando a la siguiente etapa."
-                subprocess.Popen(["~/notificacion_de_finalizacion.sh"], shell=True)
-        except KeyboardInterrupt:
-            despedida()
+        else:
+            correr = False
 
-        repetir = input("Quiere volver a correr otro Pomodoro o quiere salir")
+    except KeyboardInterrupt:
+        print("Reiniciando Programa")
+        limpiar_pantalla()
 
-    else:
-        correr = False
+
+limpiar_pantalla()
