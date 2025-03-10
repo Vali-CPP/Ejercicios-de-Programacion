@@ -7,41 +7,63 @@ import pygame as pg
 pg.mixer.init()
 
 """
-             TODO
-             - Investigar como integrar una base de datos rudimentaria en un CSV para asi mantener un track de la cantidad de tiempo que se ha trabajado
-             diariamente.
-             - Agregar una interfaz grafica de usuario para manejar absolutamente todo, creo que este es uno de los pasos mas importante, mas adelante podremos agregar la base de datos.
+            TODO
+            - Investigar como integrar una base de datos rudimentaria en un CSV para asi mantener un track de la cantidad de tiempo que se ha trabajado
+            diariamente.
+            - Agregar una interfaz grafica de usuario para manejar absolutamente todo, creo que este es uno de los pasos mas importante, mas adelante podremos agregar la base de datos.
+            - Agregar una opciona para poder cambiar la musica en cualquier momento. (Se me ocurre principalmente que en el manejo de la excepcion de 
+            la interrupcion por teclado, se de la opcion de poder cambiar la musica y que tambien se guarden los minutos y segundos por los que iba el
+            pomodoro, para que no sea una opcion de salirse simplemente, sino tambien para poder pausarlo y configurarlo.
 """
 
+class Sonido:
+    def __init__(self, objeto_sonido = None):
+                self.sonido = objeto_sonido
+
+    def reproducir(self):
+        if self.sonido:
+            self.sonido.play(-1)
+
+    def pausar(self):
+        if self.sonido:
+            self.sonido.stop()
+
+    def cambiar(self, objeto_sonido):
+        self.sonido = objeto_sonido
+
 class Pomodoro:
-    def __init__(self, t_concentracion = 25, t_descanso = 5, n_ciclos = 3, direccion_a_alarma="./Audio/.Alarma.wav"):
+    def __init__(self, t_concentracion = 25, t_descanso = 5, n_ciclos = 3, direccion_a_alarma="Audio/.Alarma.wav"):
         self.t_concentracion = t_concentracion
         self.t_descanso = t_descanso
         self.n_ciclos = n_ciclos
         self.alarma = pg.mixer.Sound(direccion_a_alarma)
 
     def definir_ciclos(self):
- 
         self.ciclos = list()
 
         for i in range(0, self.n_ciclos):
-            self.ciclos.append(["Concentracion", t_concentracion])
-            self.ciclos.append(["Descanso", t_descanso])
+            self.ciclos.append(["Concentracion", self.t_concentracion])
+            self.ciclos.append(["Descanso", self.t_descanso])
+
+    def pasar_ciclo(self):
+        self.ciclos = self.ciclo[1:]
+        self.n_ciclo -= 1
+
+    def get_ciclo_actual(self):
+        return self.ciclos[0]
 
     def temporizador(self, etapa, duracion):
 
         duracion *= 60
+        duracion 
 
         for restante in range(duracion, 0, -1):
             print("\r")
-            hr, resto = divmod(restante, 3600)
-            min, seg = divmod(resto, 60)
+            hr, resto = divmod(restante, 3600) #divmod devuelve una tupla del tipo (a/b, a%b)
+            min, seg = divmod(resto, 60) #divmod devuelve una tupla del tipo (a/b, a%b)
             print("Tiempo restante de {} {:0>2}:{:0>2}:{:0>2}".format(etapa.lower(), hr, min, seg), end="")
             time.sleep(1)
             limpiar_pantalla()
-
-    def get_ciclos(self):
-        return self.ciclos
     
     def sonar_alarma(self):
         self.alarma.play()
@@ -73,7 +95,7 @@ def menu_inicial():
 
     limpiar_pantalla()
 
-    return validacion_int("1)Iniciar un pomodoro\n2)Salir\n:", "Numero invalido", 0, 2)
+    return validacion_int("1)Iniciar un pomodoro\n2)Salir\n: ", "Numero invalido", 0, 2)
 
 def elegir_ruido():
 
@@ -93,15 +115,24 @@ def elegir_ruido():
             print("{} - {}".format(contador, sonido))
             contador += 1
 
-    decision = validacion_int("?:", "Elige un numero que este disponible", 0, len(dict_sonidos))
-   
+    decision = validacion_int("?: ", "Elige un numero que este disponible", 0, len(dict_sonidos))
+
     list_sonidos = list(dict_sonidos.keys())
 
     if decision - 1 != 0:
-        return os.path.abspath("Audio/{}".format(dict_sonidos[list_sonidos[decision - 1]]))
+        return pg.mixer.Sound(os.path.abspath("Audio/{}".format(dict_sonidos[list_sonidos[decision - 1]])))
     else:
         return None
 
+def crear_pomo():
+
+    t_concentracion = validacion_int("Ingrese el tiempo de concentracion deseado: ", "Tiempo invalido, debe ser mayor que cero", 0)
+    t_descanso = validacion_int("Ingrese el tiempo de descanso deseado: ", "Tiempo invalido, debe ser mayor que cero", 0)
+    n_ciclos = validacion_int("Ingrese el numero de ciclos a completar: ", "Tiempo invalido, el numero de ciclos tiene que ser mayor a cero", 0)
+
+    p = Pomodoro(t_concentracion, t_descanso, n_ciclos)
+
+    return p
 
 correr = True
 sonido_a_reproducir = None
@@ -113,31 +144,25 @@ while correr:
 
             limpiar_pantalla()
 
-            t_concentracion = validacion_int("Ingrese el tiempo de concentracion deseado:", "Tiempo invalido, debe ser mayor que cero", 0)
-            t_descanso = validacion_int("Ingrese el tiempo de descanso deseado:", "Tiempo invalido, debe ser mayor que cero", 0)
-            n_ciclos = validacion_int("Ingrese el numero de ciclos a completar:", "Tiempo invalido, el numero de ciclos tiene que ser mayor a cero", 0)
-
-            pomo_actual = Pomodoro(t_concentracion, t_descanso, n_ciclos)
+            pomo_actual = crear_pomo()
             pomo_actual.definir_ciclos()
 
-            sonido_a_reproducir = elegir_ruido()
+            sonido_a_reproducir = Sonido(elegir_ruido())
 
-            if sonido_a_reproducir:
-                sonido_a_reproducir = pg.mixer.Sound(sonido_a_reproducir)
+            while pomo_actual.get_ciclo_actual():
 
-            for fase in pomo_actual.get_ciclos():
+                if pomo_actual.get_ciclo_actual[0] == "Concentracion":
+                    sonido_a_reproducir.reproducir()
 
-                if sonido_a_reproducir and fase[0] == "Concentracion":
-                    sonido_a_reproducir.play(-1)
-
-                pomo_actual.temporizador(fase[0], fase[1])
+                pomo_actual.temporizador(pomo_actual.get_ciclo_actual[0], pomo_actual.get_ciclo_actual[1])
+                pomo_actual.pasar_ciclo()
                 pomo_actual.sonar_alarma()
                 limpiar_pantalla()
                 print("\nEtapa terminada, pasando a la siguiente etapa.")
-                time.sleep(2)
+                time.sleep(3)
                 
-                if sonido_a_reproducir and fase[0] == "Concentracion":
-                    sonido_a_reproducir.stop()
+                if pomo_actual.get_ciclo_actual[0] == "Descanso":
+                    sonido_a_reproducir.pausar()
 
             limpiar_pantalla()
 
